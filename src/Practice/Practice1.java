@@ -14,24 +14,21 @@ public class Practice1 {
 		driver.manage().window().maximize();
 		
 //Verify the text is present in WebTable
-		
-		String input="Holden Charles";
+		String input="Bootstrap 3";
 		boolean flag=false;
-		WebElement table=driver.findElement(By.xpath("//table"));
+		WebElement table=driver.findElement(By.id("task-table"));
 		List<WebElement> tablerow=table.findElements(By.xpath(".//tbody//tr"));
-		for(WebElement row:tablerow) {
-			List<WebElement> tabledata=row.findElements(By.xpath(".//td"));
-			for(WebElement data:tabledata) {
-				//System.out.println(data.getText());
-				if(data.getText().equals(input)) {
-					System.out.println("Available");
-					flag=true;
+			for(WebElement row:tablerow) {
+				List<WebElement> tabledata=row.findElements(By.xpath(".//td"));
+				for(WebElement data:tabledata) {
+					if(data.getText().equals(input)) {
+						System.out.println("Available");
+						flag=true;
+					}
 				}
 			}
-		}
 		if(flag==false) {
 			System.out.println("Not Available");
 		}
 	}
-
 }

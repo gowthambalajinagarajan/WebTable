@@ -14,19 +14,20 @@ public class Practice2 {
 		driver.manage().window().maximize();
 
 //Print the Cell Address
-		
 		String input="failed qa";
-		WebElement table=driver.findElement(By.xpath("//table"));
+		WebElement table=driver.findElement(By.id("task-table"));
 		List<WebElement> tablerow=table.findElements(By.xpath(".//tbody//tr"));
-		for(int i=0;i<tablerow.size();i++) {
-			List<WebElement> tabledata=tablerow.get(i).findElements(By.xpath(".//td"));
-			for(int j=0;j<tabledata.size();j++) {
-				String data=tabledata.get(j).getText();
-				if(data.equals(input)) {
-					System.out.println("The Row No. is:"+(i+1));
-					System.out.println("The Column No. is:"+(j+1));
-				}
+			for(int i=0;i<tablerow.size();i++) {
+				List<WebElement> tabledata=tablerow.get(i).findElements(By.xpath(".//td"));
+					for(int j=0;j<tabledata.size();j++) {
+						String data=tabledata.get(j).getText();
+						if(data.equals(input)) {
+						System.out.println("Row:"+(i+1));
+						System.out.println("Column:"+(j+1));
+					}
+				
 			}
-		}
+		
+			}
 	}
 }

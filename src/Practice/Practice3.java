@@ -16,20 +16,19 @@ public class Practice3 {
 
 //Search for the given Text in Webtable and Print all the records of the Same Row
 		String input="Jane Doe";
-		boolean flag=false;
-		WebElement table=driver.findElement(By.xpath("//table"));
+		WebElement table=driver.findElement(By.id("task-table"));
 		List<WebElement> tablerow=table.findElements(By.xpath(".//tbody//tr"));
-		for(int i=0;i<tablerow.size();i++) {
-			List<WebElement> tabledata=tablerow.get(i).findElements(By.xpath(".//td"));
-			for(int j=0;j<tabledata.size();j++) {
-				String data=tabledata.get(j).getText();
-				if(data.equals(input)) {
-					System.out.println("Column:"+(j+1));
-					System.out.println("Row:"+(i+1));
-					String Output=tablerow.get(i).getText();
-					System.out.println(Output);
-				}
+			for(int i=0;i<tablerow.size();i++) {
+				List<WebElement> tabledata=tablerow.get(i).findElements(By.xpath(".//td"));
+					for(int j=0;j<tabledata.size();j++) {
+						String data=tabledata.get(j).getText();
+						if(data.equals(input)) {
+							String Output=tablerow.get(i).getText();
+							System.out.println(Output);
+							System.out.println("Row:"+(i+1));
+							System.out.println("Column:"+(j+1));
+						}
+					}
 			}
-		}
 	}
 }

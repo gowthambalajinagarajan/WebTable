@@ -14,20 +14,17 @@ public class Practice6 {
 		driver.get("https://www.seleniumeasy.com/test/table-search-filter-demo.html");
 		driver.manage().window().maximize();
 	//To Print Row no. and Column no.	
-		String input="Loblab Dan";
-		WebElement table=driver.findElement(By.xpath("//table"));
+		String input="failed qa";
+		WebElement table=driver.findElement(By.id("task-table"));
 		List<WebElement> tablerow=table.findElements(By.xpath(".//tbody//tr"));
-		for(int i=0;i<tablerow.size();i++) {
-			List<WebElement> tableData=tablerow.get(i).findElements(By.xpath(".//td"));
-			for(int j=0;j<tableData.size();j++) {
-				String data=tableData.get(j).getText();
-				if(data.equals(input)) {
-					//String IndexRow=tablerow.get(i).findElement(By.xpath(".//td[1]")).getText();
-					System.out.println("Row:"+(i+1)+"  "+"Column:"+(j+1));
+			for(int i=0;i<tablerow.size();i++) {
+				List<WebElement> tabledata=tablerow.get(i).findElements(By.xpath(".//td"));
+					for(int j=0;j<tabledata.size();j++) {
+						String data=tabledata.get(j).getText();
+						if(data.equals(input)) {
+							System.out.println("Row:"+(i+1)+"   "+"Column:"+(j+1));
 				}
 			}
 		}
-		
-		
 	}
 }

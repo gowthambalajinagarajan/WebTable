@@ -3,6 +3,7 @@ package Practice;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -17,6 +18,8 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 public class Practice4 {
 	public static void main(String[] args) throws IOException {
 //Given an Input.Find out the Count of Input Present in the Excel
+		
+		String input="Mobile";
 		File f=new File("C:\\Users\\acer\\Desktop\\Java\\Demo.xlsx");
 		FileInputStream fis=new FileInputStream(f);
 		Workbook wb=new XSSFWorkbook(fis);
@@ -26,9 +29,13 @@ public class Practice4 {
 			Row r=sh.getRow(i);
 			for(int j=0;j<r.getPhysicalNumberOfCells();j++) {
 				Cell c=r.getCell(j);
-				String Data=c.getStringCellValue();
-				System.out.println(Data);
+				String Output=c.getStringCellValue();
+				System.out.println(Output);
 			}
 		}
+		
+		sh.createRow(21).createCell(6).setCellValue("hi");
+		FileOutputStream fos=new FileOutputStream(f);
+		wb.write(fos);
 	}
 }
